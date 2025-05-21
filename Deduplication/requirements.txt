@@ -1,0 +1,6 @@
+huggingface-hub
+scikit-learn
+tqdm
+thefuzz
+numpy
+pandas
