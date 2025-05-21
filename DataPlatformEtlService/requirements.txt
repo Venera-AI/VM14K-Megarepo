@@ -1,0 +1,14 @@
+python-dotenv==0.19.1
+black==22.3.0
+SQLAlchemy==2.0.30
+psycopg2-binary==2.9.9
+PyJWT==2.8.0
+pandas==2.2.2
+numpy==1.26.4
+google-cloud-storage==2.16.0
+pydantic==2.7.4
+google-cloud-pubsub==2.21.3
+beautifulsoup4==4.12.3
+huggingface-hub==0.23.4
+fastapi==0.111.0
+pymongo==4.8.0

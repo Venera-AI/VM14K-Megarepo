@@ -1,0 +1,77 @@
+{
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    }
+  ],
+  "info": {
+    "name": "API Collection",
+    "description": "Postman collection for APIs in src/api.py and related routers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Healthcheck",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/healthcheck",
+          "host": ["{{baseUrl}}"],
+          "path": ["healthcheck"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pipeline Configurations",
+      "item": [
+        {
+          "name": "Add Pipeline Config",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fPipelineConfigs",
+              "host": ["{{baseUrl}}"],
+              "path": ["fPipelineConfigs"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nameLabel\": \"exampleLabel\",\n  \"nameValue\": \"exampleValue\",\n  \"fExtConfigNameValue\": \"exampleExtConfig\",\n  \"fLoaderConfigNameValue\": \"exampleLoaderConfig\",\n  \"transferMode\": \"exampleMode\",\n  \"transformSql\": \"exampleSQL\",\n  \"privateFieldPrefix\": \"examplePrefix\",\n  \"includePrivateFields\": true,\n  \"tagNameValue\": \"exampleTag\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Trigger Pipeline",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fPipelineConfigs/run",
+              "host": ["{{baseUrl}}"],
+              "path": ["fPipelineConfigs", "run"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nameValue\": \"exampleValue\",\n  \"executionTime\": \"2025-05-21T12:00:00Z\"\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

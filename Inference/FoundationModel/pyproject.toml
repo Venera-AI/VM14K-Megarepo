@@ -1,0 +1,16 @@
+[project]
+name = "batch-infer-template"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "azure-ai-inference>=1.0.0b9",
+    "boto3>=1.38.8",
+    "google-genai>=1.14.0",
+    "groq>=0.24.0",
+    "openai>=1.77.0",
+    "pydantic>=2.11.4",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+]

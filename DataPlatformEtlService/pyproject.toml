@@ -1,0 +1,22 @@
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+)/
+'''
+[project.entry-points.pydantic]
+observe = "plugins:plugins:plugin"
+[tool.pyright]
+reportOptionalSubscript = false
+reportOptionalMemberAccess = false
+reportTypedDictNotRequiredAccess = false

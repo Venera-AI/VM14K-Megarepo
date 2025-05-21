@@ -1,0 +1,7 @@
+medicalDatalake:
+  accessKeyId: example
+  secretAccessKey: example
+medicalCdc:
+  dns: example
+medicalWarehouse:
+  accessToken: example

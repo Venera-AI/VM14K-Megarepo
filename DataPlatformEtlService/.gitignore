@@ -1,0 +1,24 @@
+# IDE
+.idea
+!.vscode/launch.json
+.vscode
+# venv
+venv
+
+# config
+.env*
+!.env.example
+*.ini
+
+# cpython
+*__pycache__*
+
+# other
+temp
+
+# db
+*.db
+input_tay
+
+*.lic
+scripts/*.yaml
