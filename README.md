@@ -44,17 +44,19 @@ The benchmarking framework supports:
 The evaluation suite includes:
 - F1 accuracy assessment
 - Pass@k metric
-<!-- ## Citation
+ ## Citation
 If you use this repository in your research, please cite our paper:
 ```bibtex
-@article{yourcitationkey,
-  title={Your Paper Title},
-  author={Author List},
-  journal={Journal Name},
-  year={2023},
-  publisher={Publisher}
+@misc{nguyen2025vm14kvietnamesemedicalbenchmark,
+      title={VM14K: First Vietnamese Medical Benchmark}, 
+      author={Thong Nguyen and Duc Nguyen and Minh Dang and Thai Dao and Long Nguyen and Quan H. Nguyen and Dat Nguyen and Kien Tran and Minh Tran},
+      year={2025},
+      eprint={2506.01305},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2506.01305}, 
 }
-``` -->
+``` 
 <!-- ## Contributing
 Contributions are welcome. Please open an issue first to discuss proposed changes. -->
 <!-- ## Contact
