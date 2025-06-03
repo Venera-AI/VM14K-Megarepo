@@ -3,11 +3,11 @@
 This repository contains the complete pipeline for the paper "VM14K: First Vietnamese Medical Benchmark". It implements a comprehensive workflow from medical data acquisition to large language model (LLM) evaluation, including data scraping, cleaning, deduplication, inference benchmarking, and performance assessment. 
 
 <a href="https://venera-ai.github.io/VM14K/" target="_blank" style="display: inline-block; padding: 6px 10px; background-color: #0d6efd; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; text-shadow: 0 0 5px rgba(255,255,255,0.5); box-shadow: 0 0 15px rgba(13, 110, 253, 0.7);">🌟 Website</a>
-<a href="https://huggingface.co/datasets/venera-ai/VietnameseMedBench/" target="_blank" style="display: inline-block; padding: 6px 10px; background-color: #0d6efd; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; text-shadow: 0 0 5px rgba(255,255,255,0.5); box-shadow: 0 0 15px rgba(13, 110, 253, 0.7);">💎 Datast</a>
+&nbsp;&nbsp;
+<a href="https://huggingface.co/datasets/venera-ai/VietnameseMedBench/" target="_blank" style="display: inline-block; padding: 6px 10px; background-color: #0d6efd; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; text-shadow: 0 0 5px rgba(255,255,255,0.5); box-shadow: 0 0 15px rgba(13, 110, 253, 0.7);">💎 Dataset</a>
 ## Table of Contents
 - [License](#license)
 - [Repository Structure](#repository-structure)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Data Pipeline](#data-pipeline)
 - [LLM Benchmarking](#llm-benchmarking)
