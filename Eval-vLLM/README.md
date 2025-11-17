@@ -87,8 +87,8 @@ This evaluation system assesses language model performance on medical QA dataset
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-username/vllm-medical-qa-eval.git
-cd vllm-medical-qa-eval
+git clone https://github.com/your-username/VM14K-Megarepo/Eval-vLLM.git
+cd Eval-vLLM
 ```
 
 2. **Install dependencies**
@@ -111,29 +111,29 @@ export CUDA_VISIBLE_DEVICES=0
 
 ```bash
 # Make script executable
-chmod +x run_evaluation_enhanced.sh
+chmod +x run_evaluation.sh
 
 # Run with default settings (no cross-language analysis)
-./run_evaluation_enhanced.sh -m Qwen/Qwen3-4B-Instruct-2507 -d medqa -l english
+./run_evaluation.sh -m Qwen/Qwen3-4B-Instruct-2507 -d medqa -l english
 
 # Run with cross-language analysis (RECOMMENDED for fair comparison)
-./run_evaluation_enhanced.sh -m Qwen/Qwen3-4B-Instruct-2507 -d vm14k -l vietnamese --auto-cross
+./run_evaluation.sh -m Qwen/Qwen3-4B-Instruct-2507 -d vm14k -l vietnamese --auto-cross
 ```
 
 ### Using Python Directly
 
 ```bash
 # Basic evaluation
-python vllm_qa_evaluation_enhanced.py \
+python vllm_qa_evaluation.py \
   --model_name "Qwen/Qwen3-4B-Instruct-2507" \
-  --dataset_path "/path/to/dataset.jsonl" \
+  --dataset_path "/path/to/MedQa.jsonl" \
   --dataset_language "english"
 
 # With cross-language analysis
-python vllm_qa_evaluation_enhanced.py \
+python vllm_qa_evaluation.py \
   --model_name "Qwen/Qwen3-4B-Instruct-2507" \
   --dataset_path "/path/to/VM14K.jsonl" \
-  --cross_dataset_path "/path/to/MedQA.jsonl" \
+  --cross_dataset_path "/path/to/VM14K.jsonl" \
   --dataset_language "vietnamese" \
   --enable_topic_batch_analysis \
   --enable_difficulty_batch_analysis
@@ -150,7 +150,7 @@ python vllm_qa_evaluation_enhanced.py \
 ### Step 1: Evaluate English (MedQA) Dataset First
 
 ```bash
-./run_evaluation_enhanced.sh \
+./run_evaluation.sh \
   -m Qwen/Qwen3-4B-Instruct-2507 \
   -d medqa \
   -l english \
@@ -172,7 +172,7 @@ python vllm_qa_evaluation_enhanced.py \
 ### Step 2: Evaluate Vietnamese (VM14K) Dataset with Cross-Dataset
 
 ```bash
-./run_evaluation_enhanced.sh \
+./run_evaluation.sh \
   -m Qwen/Qwen3-4B-Instruct-2507 \
   -d vm14k \
   -l vietnamese \
@@ -211,17 +211,17 @@ python vllm_qa_evaluation_enhanced.py \
 
 ```bash
 # Step 1: English (same as above)
-./run_evaluation_enhanced.sh -m MODEL -d medqa -l english --enable-all-batch
+./run_evaluation.sh -m MODEL -d medqa -l english --enable-all-batch
 
 # Step 2: Vietnamese with auto-cross (automatically uses medqa as cross-dataset)
-./run_evaluation_enhanced.sh -m MODEL -d vm14k -l vietnamese --auto-cross --enable-all-batch
+./run_evaluation.sh -m MODEL -d vm14k -l vietnamese --auto-cross --enable-all-batch
 ```
 
 ### Manual Paths (Non-Preset Datasets)
 
 ```bash
 # Step 1: English evaluation
-python vllm_qa_evaluation_enhanced.py \
+python vllm_qa_evaluation.py \
   --model_name MODEL \
   --dataset_path /path/to/MedQA.jsonl \
   --dataset_language english \
@@ -229,7 +229,7 @@ python vllm_qa_evaluation_enhanced.py \
   --enable_difficulty_batch_analysis
 
 # Step 2: Vietnamese with cross-dataset
-python vllm_qa_evaluation_enhanced.py \
+python vllm_qa_evaluation.py \
   --model_name MODEL \
   --dataset_path /path/to/VM14K.jsonl \
   --cross_dataset_path /path/to/MedQA.jsonl \
@@ -246,7 +246,7 @@ python vllm_qa_evaluation_enhanced.py \
 
 ```bash
 # Evaluate English only
-./run_evaluation_enhanced.sh \
+./run_evaluation.sh \
   -m Qwen/Qwen3-4B-Instruct-2507 \
   -d /path/to/english_dataset.jsonl \
   -l english \
@@ -257,14 +257,14 @@ python vllm_qa_evaluation_enhanced.py \
 
 ```bash
 # Step 1: English
-./run_evaluation_enhanced.sh \
+./run_evaluation.sh \
   -m Qwen/Qwen3-4B-Instruct-2507 \
   -d /path/to/MedQA.jsonl \
   -l english \
   --enable-all-batch
 
 # Step 2: Vietnamese with cross-analysis
-./run_evaluation_enhanced.sh \
+./run_evaluation.sh \
   -m Qwen/Qwen3-4B-Instruct-2507 \
   -d /path/to/VM14K.jsonl \
   -c /path/to/MedQA.jsonl \
@@ -275,7 +275,7 @@ python vllm_qa_evaluation_enhanced.py \
 ### Multi-GPU Example
 
 ```bash
-./run_evaluation_enhanced.sh \
+./run_evaluation.sh \
   -m meta-llama/Llama-2-70b-chat-hf \
   -d medqa \
   -l english \
@@ -608,7 +608,7 @@ ls -l /path/to/MedQA.jsonl
 ls -l /path/to/VM14K.jsonl
 
 # Use absolute paths
-./run_evaluation_enhanced.sh -m MODEL -d /full/path/to/vm14k.jsonl -c /full/path/to/medqa.jsonl
+./run_evaluation.sh -m MODEL -d /full/path/to/vm14k.jsonl -c /full/path/to/medqa.jsonl
 ```
 
 ### Missing Language Adjustment Factors
@@ -673,16 +673,16 @@ pip install --upgrade transformers pandas numpy matplotlib tqdm
 ✅ **Correct:**
 ```bash
 # First: English
-./run_evaluation_enhanced.sh -m MODEL -d medqa -l english
+./run_evaluation.sh -m MODEL -d medqa -l english
 
 # Second: Vietnamese with cross-dataset
-./run_evaluation_enhanced.sh -m MODEL -d vm14k -l vietnamese -c medqa
+./run_evaluation.sh -m MODEL -d vm14k -l vietnamese -c medqa
 ```
 
 ❌ **Incorrect:**
 ```bash
 # Vietnamese without cross-dataset or before English
-./run_evaluation_enhanced.sh -m MODEL -d vm14k -l vietnamese
+./run_evaluation.sh -m MODEL -d vm14k -l vietnamese
 ```
 
 ### 2. Use Batch Analysis for Comprehensive Results
@@ -726,16 +726,16 @@ watch -n 2 nvidia-smi
 
 ```bash
 # 1. English evaluation (run first)
-./run_evaluation_enhanced.sh -m Qwen/Qwen3-4B-Instruct-2507 -d medqa -l english --enable-all-batch
+./run_evaluation.sh -m Qwen/Qwen3-4B-Instruct-2507 -d medqa -l english --enable-all-batch
 
 # 2. Vietnamese with cross-language analysis (run second)
-./run_evaluation_enhanced.sh -m Qwen/Qwen3-4B-Instruct-2507 -d vm14k -l vietnamese -c medqa --enable-all-batch
+./run_evaluation.sh -m Qwen/Qwen3-4B-Instruct-2507 -d vm14k -l vietnamese -c medqa --enable-all-batch
 
 # 3. Quick test (small subset)
-./run_evaluation_enhanced.sh -m Qwen/Qwen3-4B-Instruct-2507 -d medqa -l english -s 1000
+./run_evaluation.sh -m Qwen/Qwen3-4B-Instruct-2507 -d medqa -l english -s 1000
 
 # 4. Multi-GPU
-./run_evaluation_enhanced.sh -m MODEL -d medqa --tensor-parallel 4
+./run_evaluation.sh -m MODEL -d medqa --tensor-parallel 4
 ```
 
 ### Expected Output Files
