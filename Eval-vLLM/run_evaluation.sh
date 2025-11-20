@@ -13,7 +13,7 @@ OUTPUT_DIR=""
 DATASET_LANGUAGE="english"
 SUBSET_SIZE=10000
 MAX_MODEL_LEN=2048
-TEMPERATURE=0.0
+TEMPERATURE=0.0  # Use the temperature recommended by the model card (0.0 is deterministic)
 MAX_TOKENS=250
 GPU_MEMORY_UTIL=0.9
 SEED=42
@@ -22,7 +22,7 @@ ENABLE_TOPIC_BATCH_ANALYSIS=false
 ENABLE_DIFFICULTY_BATCH_ANALYSIS=false
 
 # Dataset paths - Update these with your actual dataset locations
-MEDQA_DATASET_PATH="/path/to/med_qa.jsonl"  # MedQA English dataset
+MEDQA_DATASET_PATH="/path/to/MedQA.jsonl"  # MedQA English dataset
 VM14K_DATASET_PATH="/path/to/VM14K.jsonl"  # VM14K Vietnamese dataset
 
 # Colors for output
@@ -332,8 +332,8 @@ if command_exists nvidia-smi; then
 fi
 
 # Check if evaluation script exists
-if [ ! -f "vllm_qa_evaluation_enhanced.py" ]; then
-    print_message "$RED" "Error: vllm_qa_evaluation_enhanced.py not found in current directory!"
+if [ ! -f "vllm_qa_evaluation.py" ]; then
+    print_message "$RED" "Error: vllm_qa_evaluation.py not found in current directory!"
     exit 1
 fi
 
@@ -404,7 +404,7 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 # Build command
-CMD="python3 vllm_qa_evaluation_enhanced.py \
+CMD="python3 vllm_qa_evaluation.py \
     --model_name \"$MODEL_NAME\" \
     --dataset_path \"$DATASET_PATH\" \
     --dataset_language \"$DATASET_LANGUAGE\" \
