@@ -87,7 +87,7 @@ This evaluation system assesses language model performance on medical QA dataset
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-username/VM14K-Megarepo/Eval-vLLM.git
+git clone https://github.com/Venera-AI/VM14K-Megarepo/Eval-vLLM.git
 cd Eval-vLLM
 ```
 
@@ -126,14 +126,14 @@ chmod +x run_evaluation.sh
 # Basic evaluation
 python vllm_qa_evaluation.py \
   --model_name "Qwen/Qwen3-4B-Instruct-2507" \
-  --dataset_path "/path/to/MedQa.jsonl" \
+  --dataset_path "/Data/MedQA.jsonl" \
   --dataset_language "english"
 
 # With cross-language analysis
 python vllm_qa_evaluation.py \
   --model_name "Qwen/Qwen3-4B-Instruct-2507" \
-  --dataset_path "/path/to/VM14K.jsonl" \
-  --cross_dataset_path "/path/to/VM14K.jsonl" \
+  --dataset_path "/Data/VM14K.jsonl" \
+  --cross_dataset_path "/Data/MedQA.jsonl" \
   --dataset_language "vietnamese" \
   --enable_topic_batch_analysis \
   --enable_difficulty_batch_analysis
@@ -223,7 +223,7 @@ python vllm_qa_evaluation.py \
 # Step 1: English evaluation
 python vllm_qa_evaluation.py \
   --model_name MODEL \
-  --dataset_path /path/to/MedQA.jsonl \
+  --dataset_path /Data/MedQA.jsonl \
   --dataset_language english \
   --enable_topic_batch_analysis \
   --enable_difficulty_batch_analysis
@@ -231,8 +231,8 @@ python vllm_qa_evaluation.py \
 # Step 2: Vietnamese with cross-dataset
 python vllm_qa_evaluation.py \
   --model_name MODEL \
-  --dataset_path /path/to/VM14K.jsonl \
-  --cross_dataset_path /path/to/MedQA.jsonl \
+  --dataset_path /Data/VM14K.jsonl \
+  --cross_dataset_path /Data/MedQA.jsonl \
   --dataset_language vietnamese \
   --enable_topic_batch_analysis \
   --enable_difficulty_batch_analysis
@@ -248,7 +248,7 @@ python vllm_qa_evaluation.py \
 # Evaluate English only
 ./run_evaluation.sh \
   -m Qwen/Qwen3-4B-Instruct-2507 \
-  -d /path/to/english_dataset.jsonl \
+  -d /Data/MedQA.jsonl \
   -l english \
   -s 10000
 ```
@@ -259,15 +259,15 @@ python vllm_qa_evaluation.py \
 # Step 1: English
 ./run_evaluation.sh \
   -m Qwen/Qwen3-4B-Instruct-2507 \
-  -d /path/to/MedQA.jsonl \
+  -d /Data/MedQA.jsonl \
   -l english \
   --enable-all-batch
 
 # Step 2: Vietnamese with cross-analysis
 ./run_evaluation.sh \
   -m Qwen/Qwen3-4B-Instruct-2507 \
-  -d /path/to/VM14K.jsonl \
-  -c /path/to/MedQA.jsonl \
+  -d /Data/VM14K.jsonl \
+  -c /Data/MedQA.jsonl \
   -l vietnamese \
   --enable-all-batch
 ```
@@ -604,11 +604,11 @@ When enabled via `--enable-all-batch`:
 
 ```bash
 # Check file paths
-ls -l /path/to/MedQA.jsonl
-ls -l /path/to/VM14K.jsonl
+ls -l /Data/MedQA.jsonl
+ls -l /Data/VM14K.jsonl
 
 # Use absolute paths
-./run_evaluation.sh -m MODEL -d /full/path/to/vm14k.jsonl -c /full/path/to/medqa.jsonl
+./run_evaluation.sh -m MODEL -d /full/Data/VM14K.jsonl -c /full/Data/MedQA.jsonl
 ```
 
 ### Missing Language Adjustment Factors
